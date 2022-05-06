@@ -1,4 +1,4 @@
-package DIO;
+package Map;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Exemple_Sorting {
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		
 		System.out.println("-- Ordem aleatória --");
 		Map<String, Book> bookMap = new HashMap<>() {{
