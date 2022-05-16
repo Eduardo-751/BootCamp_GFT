@@ -103,7 +103,7 @@ public class MainApplication {
 								System.out.println("Email não encontrado!\n");
 							break;
 						case 3:
-							System.out.println("Digite o Valor do Saque: ");
+							System.out.println("Digite o Valor da Transferencia: ");
 							System.out.println(Account.Withdraw(scanner.nextInt()));
 							break;
 						case 4:
