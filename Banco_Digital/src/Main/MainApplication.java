@@ -21,7 +21,8 @@ public class MainApplication {
 			System.out.println("--Selecione a Operação!--");
 			System.out.println("1 - Cadastrar nova Conta!");
 			System.out.println("2 - Consultar Conta!");
-			System.out.println("3 - Fechar Systema!");
+			System.out.println("3 - Listar Contas!");
+			System.out.println("4 - Fechar Systema!");
 			option = scanner.nextInt();
 			switch(option) {
 				case 1:
@@ -30,8 +31,11 @@ public class MainApplication {
 				case 2:
 					ConsultAccount();
 					break;
+				case 3:
+					ListAccounts();
+					break;
 			}
-		}while(option != 3);
+		}while(option != 4);
 	}
 	
 	private static void RegisterAccount() {
@@ -70,6 +74,7 @@ public class MainApplication {
 		Account Account = null;
 		String email;
 		int password, option;
+		boolean finish = false;
 		
 		System.out.println("\nEntre com seu email: ");
 		email = scanner.next();
@@ -85,7 +90,12 @@ public class MainApplication {
 					System.out.println("2 - Transferencia");
 					System.out.println("3 - Saque");
 					System.out.println("4 - Consultar Operações");
-					System.out.println("5 - Sair");
+					if(Account.getClass() == SavingsAccount.class) {
+						System.out.println("5 - Calcular Rendimento");
+						System.out.println("6 - Sair");
+					}
+					else
+						System.out.println("5 - Sair");
 					option = scanner.nextInt();
 					switch(option) {
 						case 1:
@@ -110,12 +120,30 @@ public class MainApplication {
 							for(Operation op : Account.getOperations())
 								System.out.println(op.toString());
 							break;
+						case 5:
+							if(Account.getClass() == SavingsAccount.class) {
+								System.out.println("Rendimento Mensal = " + ((SavingsAccount)Account).CalculateYield());
+							}
+							else
+								finish = true;
+							break;
+						case 6:
+							if(Account.getClass() == SavingsAccount.class) 
+								finish = true;
+							break;
 					}
-				}while(option != 5);	
+				}while(!finish);	
 			else
 				System.out.println("Senha invalida!\n");	
 		}
 		else
 			System.out.println("Email não Cadastrado!\n");		
+	}
+	
+	private static void ListAccounts(){
+		for(Map.Entry<String, Account> account : accountsMap.entrySet()) {
+			Account aux = account.getValue();
+			System.out.println("\nConta = " + aux.getClass().getSimpleName() + "\n" + aux.getClient().toString() + "Data de Abertura = " + aux.getOpeningDate() + "\n");
+		}
 	}
 }

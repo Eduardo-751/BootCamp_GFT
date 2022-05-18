@@ -1,13 +1,14 @@
 package Model;
 
-public class CheckingAccount extends Account{
+import java.util.Date;
 
+public class CheckingAccount extends Account{
+	
 	//Constructor
 	public CheckingAccount(int identity, Client clientName, int password) {
-		super(identity, clientName, password);
+		this.accountId = identity;
+		this.client = clientName;
+		this.password = password; 
+		openingDate = new Date();
 	}	
-	public CheckingAccount(int identity, Client clientName, int password, double balance) {
-		super(identity, clientName, password, balance);
-	}
-	
 }

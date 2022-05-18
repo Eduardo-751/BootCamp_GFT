@@ -30,6 +30,6 @@ public class Client {
 	//Methods
 	@Override
 	public String toString() {
-		return "Name = " + name + "\n" + "Cpf = " + cpf + "\n" + "Email = " + email + "\n";
+		return "Nome = " + name + "\n" + "Cpf = " + cpf + "\n" + "Email = " + email + "\n";
 	}
 }

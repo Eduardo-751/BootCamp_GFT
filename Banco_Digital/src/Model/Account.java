@@ -4,28 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 public class Account {
-	private int accountId;
-	private double balance;
-	private Client client;
-	private Date openingDate;
-	private int password;
+	protected int accountId;
+	protected double balance;
+	protected Client client;
+	protected Date openingDate;
+	protected int password;
 	private List<Operation> operations =  new ArrayList<Operation>();
 	
-	
-	//Constructors
-	public Account(int identity, Client clientName, int password) {
-		this.accountId = identity;
-		this.client = clientName;
-		this.password = password;
-		openingDate = new Date();
-	}	
-	public Account(int identity, Client clientName, int password, double balance) {
-		this.accountId = identity;
-		this.client = clientName;
-		this.password = password;
-		this.balance = balance;
-		openingDate = new Date();
-	}
 	
 	//Gets and Sets
 	public Client getClient() {
@@ -88,7 +73,7 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "\nID = " + accountId + "\n" + "Account = " + this.getClass().getSimpleName() + "\n" + "Balance = " + balance + "\n" + client.toString() + "Opening Date = "
+		return "\nNumero da Conta = " + accountId + "\n" + "Conta = " + this.getClass().getSimpleName() + "\n" + "Saldo = " + balance + "\n" + client.toString() + "Data de Abertura = "
 				+ openingDate + "\n";
 	}
 	
